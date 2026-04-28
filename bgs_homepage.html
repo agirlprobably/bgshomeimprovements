@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BGS Home Improvements — Built Right. Every Time.</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#1B2A4A;
+  --navy-deep:#111E35;
+  --amber:#D4740F;
+  --amber-light:#E8965A;
+  --sand:#C5A87A;
+  --offwhite:#F5F3EE;
+  --cream:#EDE8DF;
+  --slate:#6B7A8D;
+  --white:#FFFFFF;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--offwhite);color:var(--navy);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── NAV ─────────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:0 2.5rem;height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:transparent;
+  transition:background 0.4s ease, box-shadow 0.4s ease;
+}
+nav.scrolled{background:var(--navy-deep);box-shadow:0 1px 0 rgba(255,255,255,0.06)}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-mark{
+  width:36px;height:36px;border-radius:6px;
+  background:var(--amber);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-weight:700;
+  color:#fff;font-size:13px;letter-spacing:-0.5px;
+  flex-shrink:0;
+}
+.nav-name{
+  font-size:13px;font-weight:500;color:#fff;line-height:1.25;
+}
+.nav-name span{display:block;font-size:10px;color:var(--sand);font-weight:300;letter-spacing:0.06em}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{color:rgba(255,255,255,0.65);font-size:13px;text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{
+  background:var(--amber);color:#fff !important;
+  padding:8px 18px;border-radius:6px;font-size:13px;font-weight:500;
+  transition:background 0.2s !important;
+}
+.nav-cta:hover{background:var(--amber-light) !important}
+
+/* ── HERO ─────────────────────────────────────── */
+.hero{
+  position:relative;min-height:100vh;
+  background:var(--navy);
+  display:flex;align-items:center;
+  overflow:hidden;
+  padding:100px 2.5rem 5rem;
+}
+.hero-bg-text{
+  position:absolute;right:-0.05em;bottom:-0.15em;
+  font-family:'Playfair Display',serif;font-weight:900;
+  font-size:clamp(180px,30vw,380px);line-height:1;
+  color:rgba(255,255,255,0.03);
+  pointer-events:none;user-select:none;
+  letter-spacing:-0.04em;
+}
+.hero-inner{
+  position:relative;z-index:2;
+  display:flex;gap:5rem;align-items:center;
+  max-width:1200px;width:100%;
+}
+.hero-text{flex:1.2;min-width:0}
+.hero-eyebrow{
+  font-size:11px;font-weight:500;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--amber);
+  margin-bottom:1.5rem;
+  opacity:0;transform:translateY(16px);
+  transition:opacity 0.7s ease,transform 0.7s ease;
+}
+.hero-eyebrow.in{opacity:1;transform:translateY(0)}
+.hero-h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(42px,5.5vw,80px);
+  font-weight:700;color:#fff;
+  line-height:1.1;letter-spacing:-0.02em;
+  margin-bottom:1.75rem;
+  opacity:0;transform:translateY(20px);
+  transition:opacity 0.8s ease,transform 0.8s ease;transition-delay:0.12s;
+}
+.hero-h1.in{opacity:1;transform:translateY(0)}
+.hero-h1 em{color:var(--amber);font-style:normal}
+.hero-body{
+  font-size:16px;line-height:1.75;color:rgba(255,255,255,0.6);
+  max-width:480px;margin-bottom:2.25rem;
+  opacity:0;transform:translateY(16px);
+  transition:opacity 0.7s ease,transform 0.7s ease;transition-delay:0.24s;
+}
+.hero-body.in{opacity:1;transform:translateY(0)}
+.hero-body strong{color:var(--sand);font-weight:500}
+.hero-btns{
+  display:flex;gap:12px;flex-wrap:wrap;
+  opacity:0;transform:translateY(14px);
+  transition:opacity 0.7s ease,transform 0.7s ease;transition-delay:0.36s;
+}
+.hero-btns.in{opacity:1;transform:translateY(0)}
+.btn-amber{
+  background:var(--amber);color:#fff;
+  padding:13px 26px;border-radius:6px;
+  font-size:14px;font-weight:500;text-decoration:none;
+  transition:background 0.2s;
+}
+.btn-amber:hover{background:var(--amber-light)}
+.btn-ghost{
+  border:1px solid rgba(197,168,122,0.5);
+  color:var(--sand);
+  padding:13px 26px;border-radius:6px;
+  font-size:14px;text-decoration:none;
+  transition:border-color 0.2s,color 0.2s;
+}
+.btn-ghost:hover{border-color:var(--sand);color:#fff}
+.hero-img-wrap{
+  flex:1;min-width:0;max-width:420px;
+  opacity:0;transform:translateX(24px);
+  transition:opacity 0.9s ease,transform 0.9s ease;transition-delay:0.2s;
+}
+.hero-img-wrap.in{opacity:1;transform:translateX(0)}
+.hero-img{
+  width:100%;aspect-ratio:4/3;border-radius:12px;
+  background:#253D62;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;overflow:hidden;position:relative;
+}
+.hero-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.hero-img-label{color:#6B829E;font-size:12px;position:relative;z-index:1}
+.hero-badge{
+  position:absolute;bottom:1.5rem;left:1.5rem;
+  background:var(--amber);color:#fff;
+  padding:8px 14px;border-radius:6px;
+  font-size:12px;font-weight:500;
+  z-index:3;
+}
+
+/* ── PROOF BAR ─────────────────────────────────── */
+.proof{
+  background:var(--amber);
+  padding:1.25rem 2.5rem;
+  display:flex;gap:0;flex-wrap:wrap;justify-content:center;
+}
+.proof-item{
+  text-align:center;padding:0.5rem 2rem;
+  border-right:1px solid rgba(255,255,255,0.2);
+}
+.proof-item:last-child{border-right:none}
+.proof-num{
+  font-family:'Playfair Display',serif;
+  font-size:24px;font-weight:700;color:#fff;
+  line-height:1.1;
+}
+.proof-label{font-size:10px;color:rgba(255,255,255,0.75);letter-spacing:0.08em;text-transform:uppercase;margin-top:2px}
+
+/* ── REVEAL UTILITY ─────────────────────────────── */
+.rv{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.rv.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}.d4{transition-delay:0.4s}.d5{transition-delay:0.5s}
+
+/* ── SERVICES ───────────────────────────────────── */
+.services{padding:5rem 2.5rem;background:var(--offwhite)}
+.section-header{max-width:1200px;margin:0 auto 3rem}
+.section-eyebrow{
+  font-size:11px;font-weight:500;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--amber);margin-bottom:0.75rem;
+}
+.section-bar{width:32px;height:3px;background:var(--amber);border-radius:2px;margin-bottom:1rem}
+.section-h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,3.5vw,46px);
+  font-weight:700;color:var(--navy);
+  line-height:1.15;letter-spacing:-0.02em;margin-bottom:0.75rem;
+}
+.section-sub{font-size:15px;color:var(--slate);line-height:1.7;max-width:520px}
+.services-grid{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;
+}
+.service-card{
+  background:#fff;border:0.5px solid #D8D2C8;
+  border-radius:10px;padding:1.5rem;
+  transition:transform 0.25s ease,box-shadow 0.25s ease;
+}
+.service-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(27,42,74,0.08)}
+.service-icon{
+  width:40px;height:40px;border-radius:8px;
+  background:#FBE9D4;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1rem;
+}
+.service-title{font-size:15px;font-weight:500;color:var(--navy);margin-bottom:6px}
+.service-desc{font-size:13px;color:var(--slate);line-height:1.6}
+
+/* ── STICKY STORY ───────────────────────────────── */
+.story-wrapper{
+  position:relative;
+  background:var(--navy);
+}
+.story-sticky-container{
+  display:flex;
+  min-height:300vh;
+}
+.story-sticky{
+  position:sticky;top:0;height:100vh;
+  flex:1;
+  display:flex;align-items:center;justify-content:flex-end;
+  padding:0 5% 0 2.5rem;
+  pointer-events:none;
+}
+.story-visual{
+  width:100%;max-width:500px;
+  height:60vh;border-radius:12px;
+  overflow:hidden;position:relative;
+  background:#253D62;
+}
+.story-visual img{width:100%;height:100%;object-fit:cover}
+.story-visual-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(17,30,53,0.8) 0%,transparent 50%);
+}
+.story-timeline-bar{
+  position:absolute;left:2rem;top:50%;transform:translateY(-50%);
+  width:2px;height:60%;background:rgba(255,255,255,0.1);border-radius:2px;
+}
+.story-timeline-fill{
+  width:100%;background:var(--amber);border-radius:2px;
+  transition:height 0.1s linear;
+}
+.story-year{
+  position:absolute;bottom:1.5rem;left:1.5rem;
+  font-family:'Playfair Display',serif;
+  font-size:13px;color:var(--sand);letter-spacing:0.08em;
+}
+.story-scrolls{
+  flex:1;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:10vh 2.5rem 10vh 5%;
+  gap:0;
+}
+.story-beat{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:5rem 0;
+}
+.story-beat-inner{max-width:460px}
+.story-beat-tag{
+  font-size:10px;font-weight:500;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--amber);
+  margin-bottom:1rem;
+  opacity:0;transform:translateY(12px);
+  transition:opacity 0.6s ease,transform 0.6s ease;
+}
+.story-beat-tag.in{opacity:1;transform:translateY(0)}
+.story-beat-year{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(52px,7vw,96px);font-weight:900;
+  color:rgba(255,255,255,0.06);
+  line-height:1;letter-spacing:-0.03em;
+  margin-bottom:0.5rem;
+  opacity:0;transform:translateY(16px);
+  transition:opacity 0.6s ease,transform 0.6s ease;transition-delay:0.08s;
+}
+.story-beat-year.in{opacity:1;transform:translateY(0)}
+.story-beat-h3{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(22px,2.5vw,32px);font-weight:700;
+  color:#fff;line-height:1.25;
+  margin-bottom:1rem;
+  opacity:0;transform:translateY(14px);
+  transition:opacity 0.6s ease,transform 0.6s ease;transition-delay:0.16s;
+}
+.story-beat-h3.in{opacity:1;transform:translateY(0)}
+.story-beat-body{
+  font-size:15px;color:rgba(255,255,255,0.55);
+  line-height:1.75;
+  opacity:0;transform:translateY(12px);
+  transition:opacity 0.6s ease,transform 0.6s ease;transition-delay:0.24s;
+}
+.story-beat-body.in{opacity:1;transform:translateY(0)}
+.story-beat-body strong{color:var(--sand);font-weight:500}
+
+/* ── PROCESS ─────────────────────────────────────── */
+.process{padding:5rem 2.5rem;background:var(--cream)}
+.process-inner{max-width:1200px;margin:0 auto}
+.process-steps{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:0;margin-top:3rem;
+}
+.process-step{
+  padding:2rem 1.75rem;
+  border-left:2px solid #D0C8BC;
+  position:relative;
+}
+.process-step:first-child{border-left:2px solid var(--amber)}
+.process-step:first-child .step-num{color:var(--amber)}
+.step-num{
+  font-family:'Playfair Display',serif;
+  font-size:32px;font-weight:900;
+  color:#D0C8BC;margin-bottom:0.75rem;line-height:1;
+}
+.step-title{font-size:15px;font-weight:500;color:var(--navy);margin-bottom:6px}
+.step-desc{font-size:13px;color:var(--slate);line-height:1.6}
+
+/* ── WORK ───────────────────────────────────────── */
+.work{padding:5rem 2.5rem;background:var(--offwhite)}
+.work-inner{max-width:1200px;margin:0 auto}
+.work-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:16px;margin-top:3rem;
+}
+.work-card{
+  border-radius:10px;overflow:hidden;
+  background:#fff;border:0.5px solid #D8D2C8;
+  transition:transform 0.25s ease;
+}
+.work-card:hover{transform:translateY(-4px)}
+.work-card-img{
+  width:100%;aspect-ratio:16/10;
+  background:#253D62;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.work-card-img img{width:100%;height:100%;object-fit:cover}
+.work-card-img-label{color:#6B829E;font-size:11px}
+.work-card-body{padding:1.25rem}
+.work-card-tag{
+  font-size:10px;font-weight:500;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--amber);margin-bottom:6px;
+}
+.work-card-title{font-size:15px;font-weight:500;color:var(--navy);margin-bottom:4px}
+.work-card-desc{font-size:13px;color:var(--slate);line-height:1.55}
+
+/* ── TESTIMONIALS ────────────────────────────────── */
+.testimonials{padding:5rem 2.5rem;background:var(--navy)}
+.testimonials-inner{max-width:1200px;margin:0 auto}
+.testimonials .section-h2{color:#fff}
+.testimonials .section-eyebrow{color:var(--amber)}
+.testimonials .section-bar{background:var(--amber)}
+.t-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:14px;margin-top:3rem;
+}
+.t-card{
+  background:rgba(255,255,255,0.04);
+  border:0.5px solid rgba(255,255,255,0.08);
+  border-radius:10px;padding:1.5rem;
+}
+.t-quote{
+  font-size:14px;color:rgba(255,255,255,0.65);
+  line-height:1.7;font-style:italic;margin-bottom:1.25rem;
+}
+.t-quote::before{content:'\201C';color:var(--amber);font-size:24px;font-family:'Playfair Display',serif;line-height:0.5;display:block;margin-bottom:8px}
+.t-author{display:flex;align-items:center;gap:10px}
+.t-avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--navy-deep);border:1px solid rgba(197,168,122,0.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:500;color:var(--sand);flex-shrink:0;
+}
+.t-name{font-size:13px;font-weight:500;color:#fff}
+.t-loc{font-size:11px;color:var(--slate)}
+
+/* ── CTA ─────────────────────────────────────────── */
+.cta-section{
+  padding:5rem 2.5rem;background:var(--amber);
+  display:flex;align-items:center;
+  justify-content:space-between;flex-wrap:wrap;gap:2rem;
+}
+.cta-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem}
+.cta-text h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(26px,3vw,40px);font-weight:700;
+  color:#fff;margin-bottom:8px;line-height:1.2;
+}
+.cta-text p{color:rgba(255,255,255,0.75);font-size:15px}
+.btn-navy{
+  background:var(--navy-deep);color:#fff;
+  padding:14px 28px;border-radius:6px;
+  font-size:14px;font-weight:500;text-decoration:none;
+  white-space:nowrap;transition:background 0.2s;
+  flex-shrink:0;
+}
+.btn-navy:hover{background:var(--navy)}
+
+/* ── FOOTER ──────────────────────────────────────── */
+footer{background:var(--navy-deep);padding:3.5rem 2.5rem 2rem}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:flex;gap:3rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.footer-brand{flex:1.5;min-width:180px}
+.footer-brand-name{
+  font-family:'Playfair Display',serif;
+  font-size:18px;font-weight:700;color:#fff;margin-bottom:4px;
+}
+.footer-tagline{color:var(--slate);font-size:13px;margin-bottom:10px}
+.footer-nc{color:#3D5270;font-size:11px;letter-spacing:0.04em}
+.footer-col{flex:1;min-width:130px}
+.footer-col-title{
+  color:var(--sand);font-size:11px;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;
+}
+.footer-col a{
+  display:block;color:var(--slate);font-size:13px;
+  margin-bottom:8px;text-decoration:none;transition:color 0.2s;
+}
+.footer-col a:hover{color:#fff}
+.footer-bottom{
+  border-top:0.5px solid rgba(255,255,255,0.06);
+  padding-top:1.25rem;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+}
+.footer-copy{color:#3D5270;font-size:11px}
+.footer-credit{color:#3D5270;font-size:11px}
+.footer-credit a{color:var(--amber);text-decoration:none}
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media(max-width:768px){
+  nav{padding:0 1.25rem}
+  .nav-links a:not(.nav-cta){display:none}
+  .hero{padding:90px 1.25rem 3rem}
+  .hero-inner{flex-direction:column;gap:2.5rem}
+  .hero-img-wrap{max-width:100%}
+  .proof-item{padding:0.5rem 1.25rem}
+  .services,.process,.work,.testimonials{padding:3.5rem 1.25rem}
+  .story-sticky-container{flex-direction:column;min-height:auto}
+  .story-sticky{display:none}
+  .story-scrolls{padding:3rem 1.25rem}
+  .story-beat{min-height:auto;padding:3rem 0}
+  .cta-section{padding:3.5rem 1.25rem}
+  footer{padding:2.5rem 1.25rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────────────────── -->
+<nav id="nav">
+  <div class="nav-logo">
+    <div class="nav-mark">BGS</div>
+    <div class="nav-name">BGS Home Improvements <span>North Carolina</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#story">Our Story</a>
+    <a href="#work">Our Work</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+  </div>
+</nav>
+
+<!-- ── HERO ──────────────────────────────────────────────────── -->
+<section class="hero" id="hero">
+  <div class="hero-bg-text">BGS</div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-eyebrow" id="h-eyebrow">40 years of craft · Jamaica-trained · North Carolina proud</p>
+      <h1 class="hero-h1" id="h-title">Built right.<br><em>Every time.</em></h1>
+      <p class="hero-body" id="h-body">Basil Speid has been building and repairing homes for over four decades — starting in Jamaica, sharpening his craft across the Caribbean, and bringing that <strong>hard-earned expertise</strong> to families across North Carolina.</p>
+      <div class="hero-btns" id="h-btns">
+        <a href="#contact" class="btn-amber">Get a free quote</a>
+        <a href="#work" class="btn-ghost">See our work</a>
+      </div>
+    </div>
+    <div class="hero-img-wrap" id="h-img">
+      <div class="hero-img">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80" alt="Home construction project" onerror="this.style.display='none'">
+        <span class="hero-img-label">Hero photo — replace with project image</span>
+      </div>
+      <div class="hero-badge">40+ Years Experience</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROOF BAR ─────────────────────────────────────────────── -->
+<div class="proof" id="proof-bar">
+  <div class="proof-item">
+    <div class="proof-num" data-count="40" data-suffix="+">0+</div>
+    <div class="proof-label">Years experience</div>
+  </div>
+  <div class="proof-item">
+    <div class="proof-num" data-count="200" data-suffix="+">0+</div>
+    <div class="proof-label">Projects completed</div>
+  </div>
+  <div class="proof-item">
+    <div class="proof-num">NC</div>
+    <div class="proof-label">Licensed & insured</div>
+  </div>
+  <div class="proof-item">
+    <div class="proof-num">5★</div>
+    <div class="proof-label">Avg. client rating</div>
+  </div>
+</div>
+
+<!-- ── SERVICES ───────────────────────────────────────────────── -->
+<section class="services" id="services">
+  <div class="section-header">
+    <p class="section-eyebrow rv">What we do</p>
+    <div class="section-bar rv d1"></div>
+    <h2 class="section-h2 rv d1">Everything your home needs,<br>under one roof</h2>
+    <p class="section-sub rv d2">We handle the full scope — or just the part you need. Every job comes with straight talk, solid work, and a crew that shows up.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card rv">
+      <div class="service-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4740F" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+      </div>
+      <p class="service-title">New Home Builds</p>
+      <p class="service-desc">Custom homes built to your spec, from foundation to final finish. Done right from day one.</p>
+    </div>
+    <div class="service-card rv d1">
+      <div class="service-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4740F" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+      </div>
+      <p class="service-title">Repairs & Renovations</p>
+      <p class="service-desc">Fixes done right the first time. No patchwork, no shortcuts.</p>
+    </div>
+    <div class="service-card rv d2">
+      <div class="service-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4740F" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+      </div>
+      <p class="service-title">Electrical</p>
+      <p class="service-desc">Licensed electrical work — installs, upgrades, panel work, and rewiring.</p>
+    </div>
+    <div class="service-card rv d3">
+      <div class="service-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4740F" stroke-width="2"><path d="M12 22c-4.97 0-9-2.69-9-6V8l9-6 9 6v8c0 3.31-4.03 6-9 6z"/></svg>
+      </div>
+      <p class="service-title">Plumbing</p>
+      <p class="service-desc">Reliable plumbing for new builds, renovations, and repairs.</p>
+    </div>
+    <div class="service-card rv d4">
+      <div class="service-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4740F" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      </div>
+      <p class="service-title">Custom Built-ins</p>
+      <p class="service-desc">Shelving, cabinetry, and storage built to fit your exact space.</p>
+    </div>
+    <div class="service-card rv d5">
+      <div class="service-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4740F" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      </div>
+      <p class="service-title">Interior & Design</p>
+      <p class="service-desc">Interior finishing and decor consultation to complete your vision.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── STICKY STORY ────────────────────────────────────────────── -->
+<section class="story-wrapper" id="story">
+  <div class="story-sticky-container" id="story-container">
+
+    <!-- sticky visual panel -->
+    <div class="story-sticky">
+      <div class="story-visual" id="story-visual">
+        <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=800&q=80" alt="Construction in Jamaica" id="story-img" onerror="this.style.display='none'">
+        <div class="story-visual-overlay"></div>
+        <div class="story-timeline-bar">
+          <div class="story-timeline-fill" id="timeline-fill" style="height:0%"></div>
+        </div>
+        <div class="story-year" id="story-year">Est. Jamaica</div>
+      </div>
+    </div>
+
+    <!-- scrolling beats -->
+    <div class="story-scrolls">
+
+      <div class="story-beat" data-img="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=800&q=80" data-year="Jamaica · 1980s">
+        <div class="story-beat-inner">
+          <p class="story-beat-tag">Where it started</p>
+          <div class="story-beat-year">1980s</div>
+          <h3 class="story-beat-h3">Learning the craft<br>from the ground up</h3>
+          <p class="story-beat-body">Basil Speid started building in Jamaica — hands in the work long before it was a business. He learned from experienced tradespeople, developed an eye for quality, and built a reputation that traveled with him.</p>
+        </div>
+      </div>
+
+      <div class="story-beat" data-img="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80" data-year="Caribbean · Overseas">
+        <div class="story-beat-inner">
+          <p class="story-beat-tag">Going overseas</p>
+          <div class="story-beat-year">1990s</div>
+          <h3 class="story-beat-h3">Sharpening skills<br>across the Caribbean</h3>
+          <p class="story-beat-body">From Jamaica to international projects, Basil expanded his scope — taking on <strong>larger builds, complex renovations, and the kind of work that builds real expertise</strong>. Different climates, different challenges, same commitment to doing it right.</p>
+        </div>
+      </div>
+
+      <div class="story-beat" data-img="https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&q=80" data-year="North Carolina · Today">
+        <div class="story-beat-inner">
+          <p class="story-beat-tag">Home base</p>
+          <div class="story-beat-year">Today</div>
+          <h3 class="story-beat-h3">40 years of craft,<br>now serving NC families</h3>
+          <p class="story-beat-body">BGS Home Improvements brings all of that accumulated expertise to homeowners across North Carolina. <strong>Four decades of work. One standard: built right, every time.</strong></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ─────────────────────────────────────────────────── -->
+<section class="process" id="process">
+  <div class="process-inner">
+    <div class="section-header" style="margin-bottom:0">
+      <p class="section-eyebrow rv">How it works</p>
+      <div class="section-bar rv d1"></div>
+      <h2 class="section-h2 rv d1">Simple process.<br>No surprises.</h2>
+      <p class="section-sub rv d2">Straight talk from first call to final walkthrough.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step rv">
+        <div class="step-num">01</div>
+        <p class="step-title">Free consultation</p>
+        <p class="step-desc">Tell us what you need. We listen before we recommend anything.</p>
+      </div>
+      <div class="process-step rv d1">
+        <div class="step-num">02</div>
+        <p class="step-title">Clear proposal</p>
+        <p class="step-desc">Detailed scope, timeline, and price. No hidden costs, no vague numbers.</p>
+      </div>
+      <div class="process-step rv d2">
+        <div class="step-num">03</div>
+        <p class="step-title">We get to work</p>
+        <p class="step-desc">Licensed crew on site. You stay informed at every stage.</p>
+      </div>
+      <div class="process-step rv d3">
+        <div class="step-num">04</div>
+        <p class="step-title">Final walkthrough</p>
+        <p class="step-desc">We don't call it done until you're satisfied with every detail.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WORK ────────────────────────────────────────────────────── -->
+<section class="work" id="work">
+  <div class="work-inner">
+    <div class="section-header">
+      <p class="section-eyebrow rv">Our work</p>
+      <div class="section-bar rv d1"></div>
+      <h2 class="section-h2 rv d1">The work speaks<br>for itself</h2>
+      <p class="section-sub rv d2">A sample of recent projects across NC. Photos coming — placeholder images shown below.</p>
+    </div>
+    <div class="work-grid">
+      <div class="work-card rv">
+        <div class="work-card-img">
+          <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=700&q=80" alt="Home build project" onerror="this.style.display='none'">
+          <span class="work-card-img-label">Project photo</span>
+        </div>
+        <div class="work-card-body">
+          <p class="work-card-tag">New build</p>
+          <p class="work-card-title">Custom Home — Charlotte, NC</p>
+          <p class="work-card-desc">3-bedroom custom build from foundation. Completed on schedule and within budget.</p>
+        </div>
+      </div>
+      <div class="work-card rv d1">
+        <div class="work-card-img">
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80" alt="Kitchen renovation" onerror="this.style.display='none'">
+          <span class="work-card-img-label">Project photo</span>
+        </div>
+        <div class="work-card-body">
+          <p class="work-card-tag">Renovation</p>
+          <p class="work-card-title">Full Kitchen Renovation — Raleigh, NC</p>
+          <p class="work-card-desc">Complete teardown and rebuild including custom cabinetry and built-in shelving.</p>
+        </div>
+      </div>
+      <div class="work-card rv d2">
+        <div class="work-card-img">
+          <img src="https://images.unsplash.com/photo-1565182999561-18d7dc61c393?w=700&q=80" alt="Built-in shelving" onerror="this.style.display='none'">
+          <span class="work-card-img-label">Project photo</span>
+        </div>
+        <div class="work-card-body">
+          <p class="work-card-tag">Custom built-ins</p>
+          <p class="work-card-title">Home Office Built-ins — Durham, NC</p>
+          <p class="work-card-desc">Floor-to-ceiling custom shelving and desk unit built to fit the exact room dimensions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ───────────────────────────────────────────── -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <p class="section-eyebrow rv">What clients say</p>
+    <div class="section-bar rv d1"></div>
+    <h2 class="section-h2 rv d1">Built on trust</h2>
+    <div class="t-grid">
+      <div class="t-card rv">
+        <p class="t-quote">BGS handled our full renovation from start to finish. Basil and his crew were professional, on time, and the quality of work is something we still show off to guests.</p>
+        <div class="t-author">
+          <div class="t-avatar">DM</div>
+          <div><p class="t-name">D. Mitchell</p><p class="t-loc">Charlotte, NC</p></div>
+        </div>
+      </div>
+      <div class="t-card rv d1">
+        <p class="t-quote">They built our custom shelving and it looks incredible. Exactly what we had in mind — and finished ahead of schedule. Would hire again without hesitation.</p>
+        <div class="t-author">
+          <div class="t-avatar">KL</div>
+          <div><p class="t-name">K. Lawrence</p><p class="t-loc">Raleigh, NC</p></div>
+        </div>
+      </div>
+      <div class="t-card rv d2">
+        <p class="t-quote">Honest, dependable, and quality work every single time. BGS is the only contractor I call for anything on my property. That says everything.</p>
+        <div class="t-author">
+          <div class="t-avatar">RT</div>
+          <div><p class="t-name">R. Thompson</p><p class="t-loc">Durham, NC</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────────────── -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner">
+    <div class="cta-text rv">
+      <h2>Ready to start<br>your project?</h2>
+      <p>Free consultations. No pressure. Just straight talk about what your home needs.</p>
+    </div>
+    <a href="tel:+1xxxxxxxxxx" class="btn-navy rv d2">Get a free quote</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <p class="footer-brand-name">BGS Home Improvements</p>
+        <p class="footer-tagline">Built right. Every time.</p>
+        <p class="footer-nc">North Carolina · Licensed & Insured · Est. Jamaica</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Services</p>
+        <a href="#services">New builds</a>
+        <a href="#services">Repairs & renovations</a>
+        <a href="#services">Electrical</a>
+        <a href="#services">Plumbing</a>
+        <a href="#services">Built-ins</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Company</p>
+        <a href="#story">Our story</a>
+        <a href="#work">Our work</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Contact</p>
+        <a href="tel:+1xxxxxxxxxx">(xxx) xxx-xxxx</a>
+        <a href="mailto:info@bgshome.com">info@bgshome.com</a>
+        <a href="#contact">North Carolina</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 BGS Home Improvements. All rights reserved.</p>
+      <p class="footer-credit">Site by <a href="https://nexxcentric.com">Nexxcentric</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ── SCRIPTS ─────────────────────────────────────────────────── -->
+<script>
+// ── Nav solidify on scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// ── Hero entrance animations
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('h-eyebrow').classList.add('in'), 200);
+  setTimeout(() => document.getElementById('h-title').classList.add('in'), 400);
+  setTimeout(() => document.getElementById('h-body').classList.add('in'), 600);
+  setTimeout(() => document.getElementById('h-btns').classList.add('in'), 800);
+  setTimeout(() => document.getElementById('h-img').classList.add('in'), 350);
+});
+
+// ── Scroll reveal (IntersectionObserver)
+const rvEls = document.querySelectorAll('.rv');
+const rvObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      rvObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+rvEls.forEach(el => rvObs.observe(el));
+
+// ── Proof bar count-up
+function countUp(el, target, suffix, duration) {
+  let start = 0;
+  const step = target / (duration / 16);
+  const timer = setInterval(() => {
+    start = Math.min(start + step, target);
+    el.textContent = Math.round(start) + suffix;
+    if (start >= target) clearInterval(timer);
+  }, 16);
+}
+const proofObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('[data-count]').forEach(el => {
+        countUp(el, parseInt(el.dataset.count), el.dataset.suffix || '', 1200);
+      });
+      proofObs.disconnect();
+    }
+  });
+}, { threshold: 0.5 });
+proofObs.observe(document.getElementById('proof-bar'));
+
+// ── Sticky story scroll
+const storyContainer = document.getElementById('story-container');
+const storyBeats = document.querySelectorAll('.story-beat');
+const storyImg = document.getElementById('story-img');
+const storyYear = document.getElementById('story-year');
+const timelineFill = document.getElementById('timeline-fill');
+const storyBeatEls = [
+  ...document.querySelectorAll('.story-beat-tag, .story-beat-year, .story-beat-h3, .story-beat-body')
+];
+
+// Beat story reveal obs
+const beatObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+    } else {
+      e.target.classList.remove('in');
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-10% 0px -10% 0px' });
+storyBeatEls.forEach(el => beatObs.observe(el));
+
+// Timeline fill and image swap on scroll
+window.addEventListener('scroll', () => {
+  if (!storyContainer) return;
+  const containerRect = storyContainer.getBoundingClientRect();
+  const containerHeight = storyContainer.offsetHeight;
+  const viewH = window.innerHeight;
+
+  const scrolled = Math.max(0, -containerRect.top);
+  const total = containerHeight - viewH;
+  const progress = Math.min(1, Math.max(0, scrolled / total));
+
+  if (timelineFill) timelineFill.style.height = (progress * 100) + '%';
+
+  // which beat are we on
+  const beatIndex = Math.min(storyBeats.length - 1, Math.floor(progress * storyBeats.length));
+  const beat = storyBeats[beatIndex];
+  if (beat) {
+    const imgSrc = beat.dataset.img;
+    const year = beat.dataset.year;
+    if (storyImg && imgSrc && storyImg.src !== imgSrc) {
+      storyImg.style.opacity = '0';
+      storyImg.style.transition = 'opacity 0.5s ease';
+      setTimeout(() => {
+        storyImg.src = imgSrc;
+        storyImg.style.opacity = '1';
+      }, 250);
+    }
+    if (storyYear && year) storyYear.textContent = year;
+  }
+}, { passive: true });
+</script>
+</body>
+</html>
